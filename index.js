@@ -15,6 +15,12 @@ const ethers = require('ethers');
 const privateKey = ethers.Wallet.createRandom().privateKey;
 console.log('Private key:', privateKey);
 
+const wallet = new ethers.Wallet(privateKey);
+const address = wallet.address;
+console.log('Address:', address);
+
+
+
 var port = 3000;
 
 const API_URL = process.env.API_URL;
