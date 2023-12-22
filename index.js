@@ -33,3 +33,33 @@ const provider = new ethers.providers.JsonRpcProvider(API_URL);
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 
 const contractInstance = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+})
+
+app.get("/index.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+})
+
+app.post("/vote", async (req, res) => {
+    var vote = req.body.vote;
+    console.log(vote)
+    async function storeDataInBlockchain(vote) {
+        console.log("Adding the candidate in voting contract...");
+        const tx = await contractInstance.addCandidate(vote);
+        await tx.wait();
+    }
+    const bool = await contractInstance.getVotingStatus();
+    if (bool == true) {
+        await storeDataInBlockchain(vote);
+        res.send("The candidate has been registered in the smart contract");
+    }
+    else {
+        res.send("Voting is finished");
+    }
+});
+
+app.listen(port, function () {
+    console.log("App is listening on port 3000")
+});
