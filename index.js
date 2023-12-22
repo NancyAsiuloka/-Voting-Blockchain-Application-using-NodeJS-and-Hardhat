@@ -12,6 +12,9 @@ app.use(express.json());
 const path = require("path");
 const ethers = require('ethers');
 
+const privateKey = ethers.Wallet.createRandom().privateKey;
+console.log('Private key:', privateKey);
+
 var port = 3000;
 
 const API_URL = process.env.API_URL;
