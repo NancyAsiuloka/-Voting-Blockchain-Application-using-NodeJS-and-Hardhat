@@ -12,12 +12,12 @@ app.use(express.json());
 const path = require("path");
 const ethers = require('ethers');
 
-const privateKey = ethers.Wallet.createRandom().privateKey;
-console.log('Private key:', privateKey);
+// const privateKey = ethers.Wallet.createRandom().privateKey;
+// console.log('Private key:', privateKey);
 
-const wallet = new ethers.Wallet(privateKey);
-const address = wallet.address;
-console.log('Address:', address);
+// const wallet = new ethers.Wallet(privateKey);
+// const address = wallet.address;
+// console.log('Address:', address);
 
 
 
