@@ -13,3 +13,14 @@ const path = require("path");
 const ethers = require('ethers');
 
 var port = 3000;
+
+const API_URL = process.env.API_URL;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
+
+const {abi} = require('./artifacts/contracts/Voting.sol/Voting.json');
+const provider = new ethers.providers.JsonRpcProvider(API_URL);
+
+const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+
+const contractInstance = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
