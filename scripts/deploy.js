@@ -1,14 +1,14 @@
 const hre = require("hardhat");
 
 async function main() {
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
+  const Voting = await hre.ethers.deployContract("Voting", [unlockTime], {
     value: lockedAmount,
   });
 
-  await lock.waitForDeployment();
+  await Voting.waitForDeployment();
 
   console.log(
-    `Contract address : ${lock.target}`
+    `Contract address : ${Voting.target}`
   );
 }
 
