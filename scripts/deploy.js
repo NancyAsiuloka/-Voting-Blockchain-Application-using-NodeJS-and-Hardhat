@@ -1,9 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Voting = await hre.ethers.deployContract("Voting", [unlockTime], {
-    value: lockedAmount,
-  });
+  const Voting = await hre.ethers.deployContract("Voting");
 
   await Voting.waitForDeployment();
 
