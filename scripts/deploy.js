@@ -3,7 +3,7 @@ const { ethers } = require("hardhat");
 async function main() {
   // Deploy the Voting contract
   const Voting = await ethers.getContractFactory("Voting");
-  const votingInstance = await Voting.deploy();
+  const votingInstance = await Voting.deploy(["Mark", "Mike", "Gideon"], 20);
 
   // Wait for deployment
   await votingInstance.deployed();
