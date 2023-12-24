@@ -1,6 +1,6 @@
 /**
-* @type import('hardhat/config').HardhatUserConfig
-*/
+ * @type import('hardhat/config').HardhatUserConfig
+ */
 
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
@@ -14,7 +14,7 @@ module.exports = {
       hardhat: {},
       volta: {
          url: API_URL,
-         accounts: [`0x${PRIVATE_KEY}`],
+         accounts: [PRIVATE_KEY],  // Change this line
          gas: 210000000,
          gasPrice: 800000000000,
       }
