@@ -12,6 +12,17 @@ app.use(express.json());
 const path = require("path");
 const ethers = require('ethers');
 
+// // Generate a new Ethereum Wallet
+// const wallet = ethers.Wallet.createRandom();
+
+// // Get the private key
+// const privateKey = wallet.privateKey;
+// console.log('Private Key:', privateKey);
+
+// // Get the Ethereum address
+// const ethAddress = wallet.address;
+// console.log('Ethereum Address:', ethAddress);
+
 
 var port = 3000;
 
