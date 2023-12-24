@@ -1,14 +1,26 @@
 const { ethers } = require("ethers");
 
 async function main() {
-  // Deploy the Voting contract
-  const Voting = await ethers.getContractFactory("Voting");
-  const votingInstance = await Voting.deploy(["Mark", "Mike", "Gideon"], 20);
+  try {
+    // Connect to the local Ethereum network
+    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
-  // Wait for deployment
-  await votingInstance.deployed();
+    // Set the default wallet with a private key (replace with your private key)
+    const privateKey = "0x300de365cb6cb4ecdae7aaa6d15c5ef0107731fcc9c8d848833fcf6c07c987ff";
+    const wallet = new ethers.Wallet(privateKey, provider);
 
-  console.log(`Contract address: ${votingInstance.address}`);
+    // Deploy the Voting contract
+    const Voting = await ethers.getContractFactory("Voting");
+    console.log("Voting contract bytecode:", Voting.bytecode); // Log bytecode
+    const votingInstance = await Voting.deploy(["Mark", "Mike", "Gideon"], 20);
+
+    // Wait for deployment
+    await votingInstance.deployed();
+
+    console.log(`Contract address: ${votingInstance.address}`);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // Execute the main function
