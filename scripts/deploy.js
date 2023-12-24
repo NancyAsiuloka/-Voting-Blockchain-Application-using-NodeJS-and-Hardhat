@@ -1,18 +1,20 @@
-const hre = require("hardhat");
+const { ethers } = require("hardhat");
 
 async function main() {
-  const Voting = await hre.ethers.deployContract("Voting");
+  // Deploy the Voting contract
+  const Voting = await ethers.getContractFactory("Voting");
+  const votingInstance = await Voting.deploy();
 
-  await Voting.waitForDeployment();
+  // Wait for deployment
+  await votingInstance.deployed();
 
-  console.log(
-    `Contract address : ${Voting.target}`
-  );
+  console.log(`Contract address: ${votingInstance.address}`);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+// Execute the main function
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
