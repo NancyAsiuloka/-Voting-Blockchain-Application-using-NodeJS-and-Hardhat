@@ -1,4 +1,4 @@
-const { ethers } = require("hardhat");
+const { ethers } = require("ethers");
 
 async function main() {
   // Deploy the Voting contract
