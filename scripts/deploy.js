@@ -11,6 +11,7 @@ async function main() {
 
     // Deploy the Voting contract
     const Voting = await ethers.getContractFactory("Voting");
+    console.log(ethers)
     console.log("Voting contract bytecode:", Voting.bytecode); // Log bytecode
     const votingInstance = await Voting.deploy(["Mark", "Mike", "Gideon"], 20);
 
