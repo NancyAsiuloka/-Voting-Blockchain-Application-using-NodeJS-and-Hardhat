@@ -23,7 +23,6 @@ const ethers = require('ethers');
 // const ethAddress = wallet.address;
 // console.log('Ethereum Address:', ethAddress);
 
-
 var port = 3000;
 
 const API_URL = process.env.API_URL;
